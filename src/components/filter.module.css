@@ -1,0 +1,16 @@
+.filter {
+    display: flex;
+    /* margin-bottom: 50px; */
+    gap: 100px;
+    padding: 30px 0;
+}
+
+.nameInput {
+    padding: 4px 6px;
+    width: 320px    ;
+}
+.difficulty {
+    width: 320px;
+    padding: 5px 7px;
+    /* margin-top: 3px; */
+}
