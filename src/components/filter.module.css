@@ -1,6 +1,5 @@
 .filter {
     display: flex;
-    /* margin-bottom: 50px; */
     gap: 100px;
     padding: 30px 0;
 }
@@ -12,5 +11,4 @@
 .difficulty {
     width: 320px;
     padding: 5px 7px;
-    /* margin-top: 3px; */
 }

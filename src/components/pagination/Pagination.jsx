@@ -11,14 +11,6 @@ const App = () => (
       defaultCurrent={1}
       total={10}
     />
-    {/* <br />
-    <Pagination
-      showSizeChanger
-      onShowSizeChange={onShowSizeChange}
-      defaultCurrent={1}
-      total={10}
-      disabled
-    /> */}
   </div>
 );
 export default App;

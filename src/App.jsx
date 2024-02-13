@@ -16,47 +16,26 @@ function App() {
     dispatch(fetchProblems());
   }, [dispatch]);
   
-
   const problems = useSelector((state) => state.problems.problems);
   const [filteredProblems, setFilteredProblems] = useState(problems?.data);
   useEffect(() => {
     setFilteredProblems(problems.data);
   }, [problems.data]);
 
-
-  // Handle filter change
-  // const handleFilterChange = (filterValue) => {
-  //   // Filter problems based on filterValue
-  //   // Example logic: filter by difficulty
-  //   const filteredData = (problems.data.filter((problem) => problem.difficultyTitle === filterValue.difficulty)) && 
-  //     (problems.data.filter((problem) => problem.userInfo.hasSolved.toString() === filterValue.status));
-  //   setFilteredProblems(filteredData);
-    
-  // };
   const handleFilterChange = ({ name = nameFilter, difficulty = difficultyFilter }) => {
-    // Filter problems based on name, difficulty, and status
+
     const filteredData = problems.data.filter((problem) => {
-      // Check if problem title includes the name filter (case insensitive)
       const nameMatch = name === '' || problem.title.toLowerCase().includes(name.toLowerCase());
-      // Check if difficulty filter is "all" or matches the problem's difficulty
       const difficultyMatch = difficulty === 'all' || problem.difficultyTitle === difficulty;
-      // Check if status filter is "all" or matches the problem's status
-      
-      
-      // Return true if all conditions are met
+
       return nameMatch && difficultyMatch;
     });
-  
-    // Update the filtered problems state
     setFilteredProblems(filteredData);
   };
   
-  // Sorting by name
   const sortByName = () => {
-    // Clone the filteredProblems array to avoid mutating the original state
+
     const sortedData = [...filteredProblems];
-  
-    // Toggle the sorting direction
     const sortOrder = sortedData[0]?.title < sortedData[1]?.title ? 1 : -1;
   
     sortedData.sort((a, b) => {
@@ -68,26 +47,20 @@ function App() {
       }
       return 0;
     });
-  
-    // Update the filtered problems state
+
     setFilteredProblems(sortedData);
   };
   const sortByID = () => {
-    // Clone the filteredProblems array to avoid mutating the original state
+
     const sortedData = [...filteredProblems];
-  
-    // Toggle the sorting direction
     const sortOrder = sortedData[0].id < sortedData[1].id ? 1 : -1;
   
     sortedData.sort((a, b) => {
       return (a.id - b.id) * sortOrder;
     });
-  
-    // Update the filtered problems state
     setFilteredProblems(sortedData);
   };
   
-
   return (
     <div className={styles.container}>
       <Filter onFilterChange={handleFilterChange} />
